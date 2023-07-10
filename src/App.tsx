@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [text, setText] = useState("");
+  const [addText, setAddText] = useState("");
+  const onAddText = () => {
+    setAddText(text);
+    setText("");
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input
+      placeholder="ここに書け"
+        value={text}
+        onChange={(event) => setText(event.target.value)}
+      />
+      <button onClick={onAddText}>追加</button>
+      <p>{addText}</p>
     </div>
   );
-}
+};
 
 export default App;
